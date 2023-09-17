@@ -23,9 +23,9 @@ const Lists = ({ lists, toggleCheck, toggleSelected }: Props) => {
           />
           {list.listName}
         
-          <ul>
+          <ul className ="hover-here">
             {list.items.map((item, itemIndex) => (
-              <li  key={itemIndex} style={{ textDecoration: item.checked ? 'line-through' : 'none' }}>
+              <li   key={itemIndex} style={{ textDecoration: item.checked ? 'line-through' : 'none' }}>
                 <input
                   type="checkbox"
                   checked={item.checked}
