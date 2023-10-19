@@ -48,8 +48,6 @@ const App = () => {
     }));
     setLists(newLists);
   };
-  
-  
 
   return (
     <>

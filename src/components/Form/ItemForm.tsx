@@ -25,17 +25,6 @@ const ItemForm = ({ addItem } : Props) => {
     <form onSubmit={handleSubmit}>
       <div className="mx-auto mb-3">
         
-        {/* <select
-          id="listName"
-          value={listName}
-          onChange={(event) => setListName(event.target.value)}
-        >
-          {lists.map((list) => (
-            <option key={list.listName} value={list.listName}>
-              {list.listName}
-            </option>
-          ))}
-        </select> */}
       </div>
       
       <div className="mb-3">
