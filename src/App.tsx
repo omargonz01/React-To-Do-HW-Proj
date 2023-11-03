@@ -9,7 +9,7 @@ import "./components/Form/Form.css"
 
 interface ICreateList {
   listName: string;
-  items: { name: string; checked: boolean }[];
+  items: { name: string; checked: boolean; dueDate: Date }[];
   selected: boolean;
 }
 
@@ -20,11 +20,11 @@ const App = () => {
     setLists([...lists, { listName, items: [], selected: false }]);
   };
 
-  const addItem = ( itemName: string) => {
+  const addItem = ( itemName: string, dueDate: Date ) => {
     const newLists = [...lists];
     newLists.forEach(list => {
       if (list.selected) {
-        list.items.push({ name: itemName, checked: false });
+        list.items.push({ name: itemName, checked: false, dueDate });
       }
     });
     setLists(newLists);

@@ -1,6 +1,6 @@
 interface ICreateList {
   listName: string;
-  items: { name: string; checked: boolean }[];
+  items: { name: string; checked: boolean; dueDate: Date }[];
   selected: boolean;
 }
 
@@ -12,26 +12,24 @@ interface Props {
 
 const Lists = ({ lists, toggleCheck, toggleSelected }: Props) => {
   return (
-    
     <ul className="list-group">
       {lists.map((list, listIndex) => (
-        <li key={listIndex} >
+        <li key={listIndex}>
           <input
             type="checkbox"
             checked={list.selected}
             onChange={() => toggleSelected(listIndex)}
           />
           {list.listName}
-        
-          <ul className ="hover-here">
+          <ul>
             {list.items.map((item, itemIndex) => (
-              <li   key={itemIndex} style={{ textDecoration: item.checked ? 'line-through' : 'none' }}>
+              <li key={itemIndex} style={{ textDecoration: item.checked ? 'line-through' : 'none' }}>
                 <input
                   type="checkbox"
                   checked={item.checked}
                   onChange={() => toggleCheck(listIndex, itemIndex)}
                 />
-                {item.name}
+                {item.name} - Due: {item.dueDate.toLocaleDateString()}
               </li>
             ))}
           </ul>
@@ -42,6 +40,7 @@ const Lists = ({ lists, toggleCheck, toggleSelected }: Props) => {
 };
 
 export default Lists;
+
 
 
 // did not end up needing this code, since i updated how the app works, but it did originally
