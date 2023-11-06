@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Nav from "./components/Nav/Nav"
 import Button from "./components/Button/Button"
 import Form from "./components/Form/Form"
 import Lists from "./components/List/Lists"
@@ -52,6 +53,7 @@ const App = () => {
 
   return (
     <>
+      <Nav/>
       <h1 className="head text-center">Create To-Do Lists Below</h1>
       <Form addList={addList} />
       <h3>Existing To-Do Lists</h3>
