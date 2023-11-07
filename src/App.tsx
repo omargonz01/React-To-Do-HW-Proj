@@ -56,7 +56,7 @@ const App = () => {
   return (
     <>
       <Nav/>
-      <h1 className="head text-center"><BsListCheck/> Create To-Do Lists Below</h1>
+      <h1 className="head text-center"> To-Do Lists <BsListCheck/></h1>
       <Form addList={addList} />
       <h3>Existing To-Do Lists</h3>
       <h6>Select a list to add items!</h6>
