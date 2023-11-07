@@ -1,11 +1,13 @@
 import { useState } from "react"
 import Nav from "./components/Nav/Nav"
+import "./components/Nav/Nav.css"
 import Button from "./components/Button/Button"
 import Form from "./components/Form/Form"
 import Lists from "./components/List/Lists"
 import ItemForm from './components/Form/ItemForm';
 import "./components/Button/Button.css"
 import "./components/Form/Form.css"
+import { BsListCheck } from "react-icons/bs"
 // import LoginFRorm and RegisterForm and UserLIsts
 
 interface ICreateList {
@@ -54,7 +56,7 @@ const App = () => {
   return (
     <>
       <Nav/>
-      <h1 className="head text-center">Create To-Do Lists Below</h1>
+      <h1 className="head text-center"><BsListCheck/> Create To-Do Lists Below</h1>
       <Form addList={addList} />
       <h3>Existing To-Do Lists</h3>
       <h6>Select a list to add items!</h6>
