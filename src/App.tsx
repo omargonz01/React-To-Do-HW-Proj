@@ -10,6 +10,7 @@ import "./components/Form/Form.css"
 import { BsListCheck } from "react-icons/bs"
 // import LoginFRorm and RegisterForm and UserLIsts
 import { ThemeProvider, createTheme } from "@mui/material/styles"
+import Register from "./views/RegisterForm"
 
 const theme = createTheme({
   palette: {
@@ -68,6 +69,7 @@ const App = () => {
     <>
       <ThemeProvider theme={theme}>
       <Nav/>
+      <Register/>
       <h1 className="head text-center"> Create Easy To-Do Lists <BsListCheck/></h1>
       <Form addList={addList} />
       <h3>Existing To-Do Lists</h3>
