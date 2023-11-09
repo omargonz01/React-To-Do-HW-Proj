@@ -9,6 +9,17 @@ import "./components/Button/Button.css"
 import "./components/Form/Form.css"
 import { BsListCheck } from "react-icons/bs"
 // import LoginFRorm and RegisterForm and UserLIsts
+import { ThemeProvider, createTheme } from "@mui/material/styles"
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#d67b60',
+      light: '#ecc4b8',
+      dark: '#91290c'
+    }
+  }
+})
 
 interface ICreateList {
   listName: string;
@@ -55,14 +66,16 @@ const App = () => {
 
   return (
     <>
+      <ThemeProvider theme={theme}>
       <Nav/>
-      <h1 className="head text-center"> To-Do Lists <BsListCheck/></h1>
+      <h1 className="head text-center"> Create Easy To-Do Lists <BsListCheck/></h1>
       <Form addList={addList} />
       <h3>Existing To-Do Lists</h3>
       <h6>Select a list to add items!</h6>
       <Lists lists={lists} toggleCheck={toggleCheck} toggleSelected={toggleSelected}/>
       {lists.some(list => list.selected) && <ItemForm lists={lists} addItem={addItem} />}
       {lists.some(list => list.items.some(item => item.checked)) && <Button removeItems={removeItems} />}
+      </ThemeProvider>
     </>
   );
 };
