@@ -12,8 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import ChecklistIcon from '@mui/icons-material/Checklist';
+import { Link } from 'react-router-dom';
 
-const pages = ['Register', 'Login', 'Home'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -87,11 +87,22 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link to={"/Home"} className='text-decoration-none'>
+                    Home
+                  </Link>
                 </MenuItem>
-              ))}
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link to={"/register"} className='text-decoration-none'>
+                  Register
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link to={"/login"} className='text-decoration-none'>
+                    Login
+                  </Link>
+                </MenuItem>
+            
             </Menu>
           </Box>
           <ChecklistIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -114,21 +125,36 @@ function ResponsiveAppBar() {
             DoDiligence
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            <Link to={"/"} className="text-decoration-none">
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                Home
               </Button>
-            ))}
+            </Link>
+            <Link to={"/register"} className="text-decoration-none">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Register
+              </Button>
+            </Link>
+            <Link to={"/login"} className="text-decoration-none">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Login
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src="#" />
               </IconButton>
             </Tooltip>
             <Menu

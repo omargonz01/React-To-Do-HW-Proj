@@ -12,22 +12,22 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useState, FormEvent } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
-import { useNavigate } from'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
-export default function Register() {
+export default function Login() {
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const navigate = useNavigate()
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     console.log({email, password});
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
@@ -40,7 +40,7 @@ export default function Register() {
     console.log(errorCode, errorMessage);
     // ..
   });
-  navigate('/Login');
+  navigate('/Home');
   };
 
   return (
@@ -58,7 +58,7 @@ export default function Register() {
             <HowToRegIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Register
+            Login
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -93,12 +93,17 @@ export default function Register() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Register
+              Login
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="login" variant="body2">
-                  {"Have an account? Sign in!"}
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="Register" variant="body2">
+                  {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>

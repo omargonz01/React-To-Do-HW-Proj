@@ -8,9 +8,10 @@ import ItemForm from './components/Form/ItemForm';
 import "./components/Button/Button.css"
 import "./components/Form/Form.css"
 import { BsListCheck } from "react-icons/bs"
-// import LoginFRorm and RegisterForm and UserLIsts
 import { ThemeProvider, createTheme } from "@mui/material/styles"
 import Register from "./views/RegisterForm"
+import Login from "./views/Login"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 const theme = createTheme({
   palette: {
@@ -67,9 +68,9 @@ const App = () => {
 
   return (
     <>
+      <BrowserRouter>
       <ThemeProvider theme={theme}>
       <Nav/>
-      <Register/>
       <h1 className="head text-center"> Create Easy To-Do Lists <BsListCheck/></h1>
       <Form addList={addList} />
       <h3>Existing To-Do Lists</h3>
@@ -77,11 +78,16 @@ const App = () => {
       <Lists lists={lists} toggleCheck={toggleCheck} toggleSelected={toggleSelected}/>
       {lists.some(list => list.selected) && <ItemForm lists={lists} addItem={addItem} />}
       {lists.some(list => list.items.some(item => item.checked)) && <Button removeItems={removeItems} />}
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        </Routes>
       </ThemeProvider>
+      </BrowserRouter>
     </>
   );
 };
-export default App
+export default App;
 
 
 // set list types to fix error forType '{ name: string; listName: string; }' is not assignable to type 'never'.
