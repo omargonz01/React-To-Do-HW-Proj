@@ -1,5 +1,5 @@
 button {
-    background-color: #d67b60;
+    background-color: #2B2D42;
     color: #f9f9f9;
     border: none;
     padding: 10px;
@@ -15,7 +15,7 @@ button:hover {
 }
   
 .myButtonClass {
-  background-color: #d67b60;
+  background-color: #2B2D42;
   color: #f9f9f9;
   border: none;
   padding: 10px;

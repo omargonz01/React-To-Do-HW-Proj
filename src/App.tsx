@@ -16,9 +16,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#d67b60',
-      light: '#ecc4b8',
-      dark: '#91290c'
+      main: '#2B2D42',
+      light: '#8D99AE',
+      dark: '#EDF2F4'
     }
   }
 })
