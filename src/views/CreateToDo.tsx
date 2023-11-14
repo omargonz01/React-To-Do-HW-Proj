@@ -1,4 +1,3 @@
-import React from 'react';
 import Form from '../components/Form/Form';
 import Lists from '../components/List/Lists';
 import ItemForm from '../components/Form/ItemForm';
@@ -20,7 +19,7 @@ interface CreateTodoProps {
   removeItems: () => void;
 }
 
-const CreateTodo: React.FC<CreateTodoProps> = ({ lists, addList, addItem, toggleCheck, toggleSelected, removeItems }) => {
+const CreateTodo = ({ lists, addList, addItem, toggleCheck, toggleSelected, removeItems }: CreateTodoProps) => {
   return (
     <>
       <Typography variant="h3" component="h1" align="center" gutterBottom>

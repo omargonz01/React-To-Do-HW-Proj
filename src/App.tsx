@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { CssBaseline, Container, Typography } from "@mui/material";
+import { CssBaseline, Container } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import "./components/Button/Button.css"
 import "./components/Form/Form.css"
-import Button from "./components/Button/Button";
-import Form from "./components/Form/Form";
-import Lists from "./components/List/Lists";
-import ItemForm from "./components/Form/ItemForm";
 import Register from "./views/RegisterForm";
 import Login from "./views/Login";
 import CreateTodo from "./views/CreateToDo";
