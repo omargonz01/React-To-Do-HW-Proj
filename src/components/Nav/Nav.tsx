@@ -149,6 +149,14 @@ function ResponsiveAppBar() {
                 Login
               </Button>
             </Link>
+            <Link to={"/create-todo"} className="text-decoration-none">
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Lists
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

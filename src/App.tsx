@@ -1,27 +1,27 @@
-import { useState } from "react"
-import Nav from "./components/Nav/Nav"
-import "./components/Nav/Nav.css"
-import Button from "./components/Button/Button"
-import Form from "./components/Form/Form"
-import Lists from "./components/List/Lists"
-import ItemForm from './components/Form/ItemForm';
+import { useState } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CssBaseline, Container, Typography } from "@mui/material";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Nav from "./components/Nav/Nav";
 import "./components/Button/Button.css"
 import "./components/Form/Form.css"
-import { BsListCheck } from "react-icons/bs"
-import { ThemeProvider, createTheme } from "@mui/material/styles"
-import Register from "./views/RegisterForm"
-import Login from "./views/Login"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Button from "./components/Button/Button";
+import Form from "./components/Form/Form";
+import Lists from "./components/List/Lists";
+import ItemForm from "./components/Form/ItemForm";
+import Register from "./views/RegisterForm";
+import Login from "./views/Login";
+import CreateTodo from "./views/CreateToDo";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#2B2D42',
-      light: '#8D99AE',
-      dark: '#EDF2F4'
-    }
-  }
-})
+      main: "#2B2D42",
+      light: "#8D99AE",
+      dark: "#EDF2F4",
+    },
+  },
+});
 
 interface ICreateList {
   listName: string;
@@ -36,9 +36,9 @@ const App = () => {
     setLists([...lists, { listName, items: [], selected: false }]);
   };
 
-  const addItem = ( itemName: string, dueDate: Date ) => {
+  const addItem = (itemName: string, dueDate: Date) => {
     const newLists = [...lists];
-    newLists.forEach(list => {
+    newLists.forEach((list) => {
       if (list.selected) {
         list.items.push({ name: itemName, checked: false, dueDate });
       }
@@ -48,7 +48,8 @@ const App = () => {
 
   const toggleCheck = (listIndex: number, itemIndex: number) => {
     const newLists = [...lists];
-    newLists[listIndex].items[itemIndex].checked = !newLists[listIndex].items[itemIndex].checked;
+    newLists[listIndex].items[itemIndex].checked =
+      !newLists[listIndex].items[itemIndex].checked;
     setLists(newLists);
   };
 
@@ -59,35 +60,31 @@ const App = () => {
   };
 
   const removeItems = () => {
-    const newLists = lists.map(list => ({
+    const newLists = lists.map((list) => ({
       ...list,
-      items: list.items.filter(item => !item.checked),
+      items: list.items.filter((item) => !item.checked),
     }));
     setLists(newLists);
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <BrowserRouter>
-      <ThemeProvider theme={theme}>
-      <Nav/>
-      <h1 className="head text-center"> Create Easy To-Do Lists <BsListCheck/></h1>
-      <Form addList={addList} />
-      <h3>Existing To-Do Lists</h3>
-      <h6>Select a list to add items!</h6>
-      <Lists lists={lists} toggleCheck={toggleCheck} toggleSelected={toggleSelected}/>
-      {lists.some(list => list.selected) && <ItemForm lists={lists} addItem={addItem} />}
-      {lists.some(list => list.items.some(item => item.checked)) && <Button removeItems={removeItems} />}
-      <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        </Routes>
-      </ThemeProvider>
+      <Nav />
+        <Container maxWidth="md">
+          
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/create-todo" element={<CreateTodo lists={lists} addList={addList} addItem={addItem} toggleCheck={toggleCheck} toggleSelected={toggleSelected} removeItems={removeItems} />} />
+          </Routes>
+        </Container>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 };
-export default App;
 
+export default App;
 
 // set list types to fix error forType '{ name: string; listName: string; }' is not assignable to type 'never'.
