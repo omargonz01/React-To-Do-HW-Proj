@@ -8,6 +8,7 @@ import "./components/Form/Form.css"
 import Register from "./views/RegisterForm";
 import Login from "./views/Login";
 import CreateTodo from "./views/CreateToDo";
+import HomePage from "./views/Home";
 
 const theme = createTheme({
   palette: {
@@ -71,6 +72,7 @@ const App = () => {
         <Container maxWidth="md">
           
           <Routes>
+            <Route path="/home" element={<HomePage/>} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/create-todo" element={<CreateTodo lists={lists} addList={addList} addItem={addItem} toggleCheck={toggleCheck} toggleSelected={toggleSelected} removeItems={removeItems} />} />

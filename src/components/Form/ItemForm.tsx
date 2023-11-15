@@ -26,7 +26,8 @@ const ItemForm = ({ addItem }: Props) => {
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="itemName" className="form-label">
-          Item Name:
+          <p><u>Add Item</u></p>
+          <em>Item Name:</em>
         </label>
         <input
           type="text"
@@ -49,7 +50,7 @@ const ItemForm = ({ addItem }: Props) => {
         />
       </div>
       <button type="submit" className="myButtonClass">
-        Add Item
+        Add To List
       </button>
     </form>
   );

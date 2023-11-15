@@ -88,7 +88,7 @@ function ResponsiveAppBar() {
               }}
             >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to={"/Home"} className='text-decoration-none'>
+                  <Link to={"/home"} className='text-decoration-none'>
                     Home
                   </Link>
                 </MenuItem>
@@ -125,7 +125,7 @@ function ResponsiveAppBar() {
             DoDiligence
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Link to={"/"} className="text-decoration-none">
+            <Link to={"/home"} className="text-decoration-none">
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
