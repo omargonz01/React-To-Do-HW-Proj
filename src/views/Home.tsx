@@ -1,11 +1,21 @@
-import React from 'react';
-import { Container, Typography, Box, Button, Card, CardContent, CardMedia } from '@mui/material';
+import React, { useState } from 'react';
+import { Container, Typography, Box, Button, Card, CardContent, CardMedia, Snackbar } from '@mui/material';
 import '../components/Form/Home.css';
+import MuiAlert from '@mui/material/Alert';
 import { Link } from 'react-router-dom';
 
 
 
 const HomePage: React.FC = () => {
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const handleOpenSnackbar = () => {
+    setOpenSnackbar(true);
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
   return (
     <Container className="styled-container">
       <Typography variant="h2" className="title">
@@ -18,7 +28,7 @@ const HomePage: React.FC = () => {
       <Box mt={4}>
         
         <Link to="/create-todo" className="text-decoration-none">
-          <Button className="get-started-button" variant="contained" color="primary" size="large">
+          <Button className="get-started-button" variant="contained" color="primary" size="large" onClick={handleOpenSnackbar}>
             Get Started
           </Button>
         </Link>
@@ -42,7 +52,11 @@ const HomePage: React.FC = () => {
           </CardContent>
         </Card>
       </Box>
-
+      <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+        <MuiAlert elevation={6} variant="filled" onClose={handleCloseSnackbar} severity="success">
+          Task completed successfully!
+        </MuiAlert>
+      </Snackbar>
       {/* will place additional MUI components here */}
     </Container>
   );

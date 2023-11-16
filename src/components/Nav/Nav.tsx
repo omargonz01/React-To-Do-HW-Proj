@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -214,10 +215,10 @@ function ResponsiveAppBar() {
                 <span className='me-3'>{user.email}</span>
               )}
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="" src="" />
-              </IconButton>
-            </Tooltip>
+      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+        <Avatar alt="Profile" src="" component={InsertEmoticonIcon} />
+      </IconButton>
+    </Tooltip>
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
