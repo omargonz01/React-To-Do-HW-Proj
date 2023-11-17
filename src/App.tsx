@@ -72,6 +72,7 @@ const App = () => {
         <Container maxWidth="md">
           
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage/>} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />

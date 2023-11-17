@@ -14,11 +14,11 @@ import MenuItem from "@mui/material/MenuItem";
 import ChecklistIcon from "@mui/icons-material/Checklist";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -45,7 +45,19 @@ function ResponsiveAppBar() {
         }
       }
     });
-  }, []);
+    }, []);
+
+    const handleLogout = (callback: () => void) => {
+    signOut(auth).then(() => {
+      setUser ({
+        id: "",
+        email: ""
+      });
+      callback();
+    }).catch((error) => {
+      alert(error)
+    });
+  }
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -236,9 +248,15 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                setting === 'Logout' ? (
+                <MenuItem key={setting} onClick={()=> {handleCloseUserMenu(); handleLogout(() => {window.location.href = "/"; }); }}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
+                ) : (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+                )
               ))}
             </Menu>
           </Box>
