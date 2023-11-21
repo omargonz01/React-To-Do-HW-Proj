@@ -36,6 +36,7 @@ const Lists = ({ lists, toggleCheck, toggleSelected }: Props) => {
                 </IconButton>
               }
               disablePadding
+              sx={{ pr: 3 }}
             >
               <ListItemButton role={undefined} onClick={() => toggleSelected(listIndex)} dense>
                 <ListItemIcon>
