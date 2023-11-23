@@ -4,7 +4,7 @@ interface IAddList{
   addList: (listName: string) => void
 }
 
-
+// will need to adjust handleSubmit on submit to save user liste to db
 const Form = ({ addList } : IAddList) => {
   const [listName, setListName] = useState('')
 
