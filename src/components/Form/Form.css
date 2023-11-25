@@ -82,3 +82,17 @@ input[type=submit]:hover {
     flex-direction: column;
   }
   
+/* Style for the date input */
+input[type="date"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style for the time input */
+  input[type="time"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
