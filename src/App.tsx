@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline, Container } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { db } from './firebase.tsx';
 import Nav from "./components/Nav/Nav";
 import "./components/Button/Button.css"
 import "./components/Form/Form.css"
@@ -9,6 +10,9 @@ import Register from "./views/RegisterForm";
 import Login from "./views/Login";
 import CreateTodo from "./views/CreateToDo";
 import HomePage from "./views/Home";
+import firebase from 'firebase/app'; 
+import 'firebase/firestore';
+
 
 const theme = createTheme({
   palette: {
@@ -28,9 +32,28 @@ interface ICreateList {
 
 const App = () => {
   const [lists, setLists] = useState<ICreateList[]>([]);
+    
+  useEffect(() => {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      db.collection('users').doc(user.uid).collection('lists').onSnapshot((snapshot) => {
+        const newLists = snapshot.dovs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setLists(newLists
+      });
+    }
+  }, []);
 
-  const addList = (listName: string) => {
-    setLists([...lists, { listName, items: [], selected: false }]);
+  const addList = (listName) => {
+    const user = firebase.auth().currentUser;
+    const newList = {
+      listName: listName,
+      items: [],
+      selected: false,
+    };
+    db.collection('users').doc(user.uid).collection('lists').add(newList);
   };
 
   const addItem = (itemName: string, dueDate: Date) => {
